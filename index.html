@@ -1,5 +1,109 @@
+<!DOCTYPE html>
 <html>
-<body>
-    <h1>WEIRD WEB OCTOBER</h1>
-</body>
+    <head>
+        <title>Weird Web October</title>
+
+    <style>
+        div {
+            padding-left: 10px;
+        }
+
+        .past {
+            opacity: 25%;
+        }
+
+        .current {
+            font-weight: bold;
+            line-height: 200%;
+            font-size: 200%;
+        }
+
+        .current::marker {
+            font-size: initial;
+        }
+
+        .future {
+        }
+    </style>
+    </head>
+    <body>
+        <h1>Weird Web October</h1>
+
+        <div>
+            Weird Web October is a challenge to try and make a website every day of October, based on the theme for each day, inspired by <a href="https://inktober.com/">Inktober</a>. It’s open to you and everyone!
+        </div>
+
+        <h2>Why?</h2>
+
+        <div>
+            We want to bring back the WEIRD WEB. When people just put fun and silly stuff on the internet, not for followers or likes but just for the joy of making something and sharing it.
+        </div>
+
+        <h2>How?</h2>
+        <div>
+            <h3>Step 1: Just make a website!</h3>
+            <div>
+                It can be static, dynamic, made with a website builder - whatever you’re comfortable with. We recommend about an hour to get the creative juices flowing, but it’s up to you.
+            </div>
+
+            <h3>Step 2: Share it!</h3>
+            <div>
+                This step is optional, but we’d really love to see what everyone is making! Use the hashtag #WeirdWeb on social media or send us your URL here.
+            </div>
+        </div>
+
+        <h2>Themes</h2>
+        <ol id="themes">
+            <li>Nature</li>
+            <li>CSS</li>
+            <li>Color</li>
+            <li>Lists</li>
+            <li>Food</li>
+            <li>Notifications</li>
+            <li>Science</li>
+            <li>Hashtags</li>
+            <li>Blessed</li>
+            <li>Art</li>
+            <li>API</li>
+            <li>Ritual</li>
+            <li>GIFs</li>
+            <li>History</li>
+            <li>Audio</li>
+            <li>Social</li>
+            <li>Dimensions</li>
+            <li>Words</li>
+            <li>Data</li>
+            <li>Capitalism</li>
+            <li>Memes</li>
+            <li>Bugs</li>
+            <li>IRL</li>
+            <li>Cursed</li>
+            <li>Interactive</li>
+            <li>Chat</li>
+            <li>Nostalgia</li>
+            <li>Generative</li>
+            <li>Forms</li>
+            <li>Emoji</li>
+            <li>Spooky</li>
+        </ol>
+
+        <script>
+            console.log("beep");
+            let now = new Date();
+
+            if(now.getMonth() == 9) //October
+            {
+                let today = now.getDate();
+                let elements = document.getElementById("themes").children;
+                for(let i = 0; i < today; i++)
+                {
+                    let when = "";
+                    if((i+1) < today) when = "past";
+                    else if((i+1) == today) when = "current";
+
+                    elements[i].classList.add(when);
+                }
+            }
+        </script>
+    </body>
 </html>
