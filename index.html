@@ -4,8 +4,52 @@
         <title>Weird Web October</title>
 
     <style>
-        div {
+        :root {
+            --lightness: 50%;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --lightness: 75%;
+            }
+
+            body {
+                background-color: #111;
+                color: #fff;
+            }
+
+            a {
+                color: #8bf;
+            }
+
+            a:visited {
+                color: #faf;
+            }
+        }
+
+        body {
+            font-family: sans-serif;
+        }
+
+        p {
             padding-left: 10px;
+        }
+
+        @keyframes wiggle {
+            from {
+                transform: skewX(-8deg);
+            }
+            to {
+                transform: skewX(8deg);
+            }
+        }
+        .header-animate {
+            display: inline-block;
+            animation: 0.2s infinite alternate linear wiggle;
+
+            background: linear-gradient(in hsl longer hue 45deg, hsl(0deg, 75%, var(--lightness)) 10%, hsl(0deg, 75%, var(--lightness)) 90%);
+            background-clip: text;
+            color: transparent;
         }
 
         .past {
@@ -27,30 +71,30 @@
     </style>
     </head>
     <body>
-        <h1>Weird Web October</h1>
+        <h1><span class="header-animate">Weird</span> Web October</h1>
 
-        <div>
+        <p>
             Weird Web October is a challenge to try and make a website every day of October, based on the theme for each day, inspired by <a href="https://inktober.com/">Inktober</a>. It’s open to you and everyone!
-        </div>
+        </p>
 
         <h2>Why?</h2>
 
-        <div>
+        <p>
             We want to bring back the WEIRD WEB. When people just put fun and silly stuff on the internet, not for followers or likes but just for the joy of making something and sharing it.
-        </div>
+        </p>
 
         <h2>How?</h2>
-        <div>
+        <p>
             <h3>Step 1: Just make a website!</h3>
-            <div>
+            <p>
                 It can be static, dynamic, made with a website builder - whatever you’re comfortable with. We recommend about an hour to get the creative juices flowing, but it’s up to you.
-            </div>
+            </p>
 
             <h3>Step 2: Share it!</h3>
-            <div>
+            <p>
                 This step is optional, but we’d really love to see what everyone is making! Use the hashtag #WeirdWeb on social media or send us your URL here.
-            </div>
-        </div>
+            </p>
+        </p>
 
         <h2>Themes</h2>
         <ol id="themes">
