@@ -3,100 +3,100 @@
     <head>
         <title>Weird Web October</title>
 
-    <style>
-        :root {
-            --lightness: 50%;
-        }
-
-        @media (prefers-color-scheme: dark) {
+        <style>
             :root {
-                --lightness: 75%;
+                --lightness: 50%;
+            }
+
+            @media (prefers-color-scheme: dark) {
+                :root {
+                    --lightness: 75%;
+                }
+
+                body {
+                    background-color: #111;
+                    color: #fff;
+                }
+
+                a {
+                    color: #8bf;
+                }
+
+                a:visited {
+                    color: #faf;
+                }
             }
 
             body {
-                background-color: #111;
-                color: #fff;
+                font-family: sans-serif;
             }
 
-            a {
-                color: #8bf;
+            p {
+                padding-left: 10px;
             }
 
-            a:visited {
-                color: #faf;
+            @keyframes wiggle {
+                from {
+                    transform: skewX(-8deg);
+                }
+                to {
+                    transform: skewX(8deg);
+                }
             }
-        }
+            .header-animate {
+                display: inline-block;
+                animation: 0.2s infinite alternate linear wiggle;
 
-        body {
-            font-family: sans-serif;
-        }
-
-        p {
-            padding-left: 10px;
-        }
-
-        @keyframes wiggle {
-            from {
-                transform: skewX(-8deg);
+                background: linear-gradient(in hsl longer hue 45deg, hsl(0deg, 75%, var(--lightness)) 10%, hsl(0deg, 75%, var(--lightness)) 90%);
+                background-clip: text;
+                color: transparent;
             }
-            to {
-                transform: skewX(8deg);
+
+            h1 {
+                text-align: center;
             }
-        }
-        .header-animate {
-            display: inline-block;
-            animation: 0.2s infinite alternate linear wiggle;
 
-            background: linear-gradient(in hsl longer hue 45deg, hsl(0deg, 75%, var(--lightness)) 10%, hsl(0deg, 75%, var(--lightness)) 90%);
-            background-clip: text;
-            color: transparent;
-        }
+            main {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-around;
+            }
 
-        h1 {
-            text-align: center;
-        }
-
-        main {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            justify-content: space-around;
-        }
-
-        section {
-            width: 40vw;
-            margin: 20px;
-        }
-
-        @media (max-width: 1000px) {
             section {
-                width: 80vw;
+                width: 40vw;
+                margin: 20px;
             }
-        }
 
-        #themes li {
-            line-height: 150%;
-        }
+            @media (max-width: 1000px) {
+                section {
+                    width: 80vw;
+                }
+            }
 
-        .past {
-            opacity: 25%;
-        }
+            #themes li {
+                line-height: 150%;
+            }
 
-        .current {
-            font-weight: bold;
-            line-height: 200%;
-            font-size: 200%;
-        }
+            .past {
+                opacity: 25%;
+            }
 
-        .current::marker {
-            font-size: initial;
-        }
+            .current {
+                font-weight: bold;
+                line-height: 200%;
+                font-size: 200%;
+            }
 
-        footer {
-            text-align: center;
-            padding: 20px;
-        }
-    </style>
+            .current::marker {
+                font-size: initial;
+            }
+
+            footer {
+                text-align: center;
+                padding: 20px;
+            }
+        </style>
     </head>
     <body>
         <h1><span class="header-animate">Weird</span> Web October</h1>
