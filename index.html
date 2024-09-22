@@ -8,11 +8,13 @@
         <style>
             :root {
                 --lightness: 50%;
+                --code-background: #ddd;
             }
 
             @media (prefers-color-scheme: dark) {
                 :root {
                     --lightness: 75%;
+                    --code-background: #333;
                 }
 
                 body {
@@ -68,12 +70,57 @@
             section {
                 width: 40vw;
                 margin: 20px;
+                position: relative;
             }
 
             @media (max-width: 1000px) {
                 section {
                     width: 80vw;
                 }
+            }
+
+            code {
+                display: block;
+                white-space: pre;
+                overflow: auto;
+                background: var(--code-background);
+                margin: 10px;
+                margin-bottom: 30px;
+                padding: 10px;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+            code + span {
+                display: block;
+                position: absolute;
+                width: 100px;
+                left: calc(50% - 50px);
+                text-align: center;
+                opacity: 0;
+                transition: opacity 0.5s;
+                background: var(--code-background);
+                border-radius: 10px;
+                padding: 10px;
+                margin-top: -20px;
+            }
+            
+            code + span::before {
+                content: "";
+                display: block;
+                position: absolute;
+                left: calc(50% - 10px);
+                bottom: 100%;
+                width: 0;
+                height: 0;
+                border-bottom: 10px solid var(--code-background);
+                border-top: 10px solid transparent;
+                border-left: 10px solid transparent;
+                border-right: 10px solid transparent;
+            }
+
+            code:hover + span {
+                opacity: 1;
             }
 
             #themes li {
@@ -124,7 +171,16 @@
 
                     <h3>Step 2: Share it!</h3>
                     <p>
-                    This step is optional, but we’d really love to see what everyone is making! Submit your website <a href="https://forms.gle/cXA4P7vsxqrtJp516">here</a> to get added to <a href="https://docs.google.com/spreadsheets/d/1CiyuIlKIJoIvzhZ54yceUZ-GDYHoB-CLY6j3fvYZaRk/edit?usp=sharing">this spreadsheet</a>, or use the hashtag #WeirdWeb on social media.
+                    This step is optional, but we’d really love to see what everyone is making! Our friends at <a href="https://octothorp.es">Octothorpes</a> have made it super easy to get your site listed on the <a href="https://octothorp.es/~/weirdweboctober">#weirdweboctober</a> hashtag just by just adding this code snippet to the &lt;head&gt; section of your site:
+
+                    <code id="code-snippet">&lt;link rel=&quot;preload&quot; as=&quot;fetch&quot;
+    href=&quot;https://octothorp.es/?uri=https://weirdweboctober.website/&quot; &gt;
+&lt;link rel=&quot;octo:octothorpes&quot; href=&quot;weirdweboctober&quot; &gt;</code>
+                    <span id="snippet-copy">Click to copy</span>
+                   
+                    And add this snippet each day to include a hashtag for the theme:
+                    <code id="theme-code-snippet">&lt;link rel=&quot;octo:octothorpes&quot; href=&quot;<span id="theme-hashtag">Nature</span>&quot; &gt;</code>
+                    <span id="theme-snippet-copy">Click to copy</span>
                     </p>
                 </p>
 
@@ -206,11 +262,16 @@
         <script>
             console.log("beep");
             let now = new Date();
+            let currenttheme = "Nature";
 
             if(now.getMonth() == 9) //October
             {
                 let today = now.getDate();
                 let elements = document.getElementById("themes").children;
+
+                currenttheme = elements[today-1].textContent;
+                document.getElementById("theme-hashtag").textContent = currenttheme;
+
                 for(let i = 0; i < today; i++)
                 {
                     let when = "";
@@ -220,6 +281,32 @@
                     elements[i].classList.add(when);
                 }
             }
+
+            let snippet = '<link rel="preload" as="fetch" href="https://octothorp.es/?uri=https://weirdweboctober.website/" >\n<link rel="octo:octothorpes" href="weirdweboctober" >';
+            let codesnippet = document.getElementById("code-snippet");
+            let snippetcopy = document.getElementById("snippet-copy");
+
+            codesnippet.addEventListener("click", function(event) {
+                navigator.clipboard.writeText(snippet);
+                snippetcopy.textContent = "Copied!";
+            });
+
+            snippetcopy.addEventListener("transitionend", function(event) {
+                if(snippetcopy.style.opacity == 0) snippetcopy.textContent = "Click to copy";
+            });
+
+            let themesnippet = '<link rel="octo:octothorpes" href="' + currenttheme + '" >';
+            let themecodesnippet = document.getElementById("theme-code-snippet");
+            let themesnippetcopy = document.getElementById("theme-snippet-copy");
+
+            themecodesnippet.addEventListener("click", function(event) {
+                navigator.clipboard.writeText(themesnippet);
+                themesnippetcopy.textContent = "Copied!";
+            });
+
+            themesnippetcopy.addEventListener("transitionend", function(event) {
+                if(themesnippetcopy.style.opacity == 0) themesnippetcopy.textContent = "Click to copy";
+            });
         </script>
     </body>
 </html>
