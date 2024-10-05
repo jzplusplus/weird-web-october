@@ -141,6 +141,12 @@
                 font-size: initial;
             }
 
+            .future {
+                pointer-events: none;
+                color: inherit;
+                text-decoration: inherit;
+            }
+
             footer {
                 text-align: center;
                 padding: 20px;
@@ -220,37 +226,37 @@
             <section>
                 <h2>Themes</h2>
                 <ol id="themes">
-                    <li>Nature</li>
-                    <li>CSS</li>
-                    <li>Color</li>
-                    <li>Lists</li>
-                    <li>Food</li>
-                    <li>Notifications</li>
-                    <li>Science</li>
-                    <li>Hashtags</li>
-                    <li>Blessed</li>
-                    <li>Art</li>
-                    <li>API</li>
-                    <li>Ritual</li>
-                    <li>GIFs</li>
-                    <li>History</li>
-                    <li>Audio</li>
-                    <li>Social</li>
-                    <li>Dimensions</li>
-                    <li>Words</li>
-                    <li>Data</li>
-                    <li>Capitalism</li>
-                    <li>Memes</li>
-                    <li>Bugs</li>
-                    <li>IRL</li>
-                    <li>Cursed</li>
-                    <li>Interactive</li>
-                    <li>Chat</li>
-                    <li>Nostalgia</li>
-                    <li>Generative</li>
-                    <li>Forms</li>
-                    <li>Emoji</li>
-                    <li>Spooky</li>
+                    <a href="https://octothorp.es/~/Nature"><li>Nature</li></a>
+                    <a href="https://octothorp.es/~/CSS"><li>CSS</li></a>
+                    <a href="https://octothorp.es/~/Color"><li>Color</li></a>
+                    <a href="https://octothorp.es/~/Lists"><li>Lists</li></a>
+                    <a href="https://octothorp.es/~/Food"><li>Food</li></a>
+                    <a href="https://octothorp.es/~/Notifications"><li>Notifications</li></a>
+                    <a href="https://octothorp.es/~/Science"><li>Science</li></a>
+                    <a href="https://octothorp.es/~/Hashtags"><li>Hashtags</li></a>
+                    <a href="https://octothorp.es/~/Blessed"><li>Blessed</li></a>
+                    <a href="https://octothorp.es/~/Art"><li>Art</li></a>
+                    <a href="https://octothorp.es/~/API"><li>API</li></a>
+                    <a href="https://octothorp.es/~/Ritual"><li>Ritual</li></a>
+                    <a href="https://octothorp.es/~/GIFs"><li>GIFs</li></a>
+                    <a href="https://octothorp.es/~/History"><li>History</li></a>
+                    <a href="https://octothorp.es/~/Audio"><li>Audio</li></a>
+                    <a href="https://octothorp.es/~/Social"><li>Social</li></a>
+                    <a href="https://octothorp.es/~/Dimensions"><li>Dimensions</li></a>
+                    <a href="https://octothorp.es/~/Words"><li>Words</li></a>
+                    <a href="https://octothorp.es/~/Data"><li>Data</li></a>
+                    <a href="https://octothorp.es/~/Capitalism"><li>Capitalism</li></a>
+                    <a href="https://octothorp.es/~/Memes"><li>Memes</li></a>
+                    <a href="https://octothorp.es/~/Bugs"><li>Bugs</li></a>
+                    <a href="https://octothorp.es/~/IRL"><li>IRL</li></a>
+                    <a href="https://octothorp.es/~/Cursed"><li>Cursed</li></a>
+                    <a href="https://octothorp.es/~/Interactive"><li>Interactive</li></a>
+                    <a href="https://octothorp.es/~/Chat"><li>Chat</li></a>
+                    <a href="https://octothorp.es/~/Nostalgia"><li>Nostalgia</li></a>
+                    <a href="https://octothorp.es/~/Generative"><li>Generative</li></a>
+                    <a href="https://octothorp.es/~/Forms"><li>Forms</li></a>
+                    <a href="https://octothorp.es/~/Emoji"><li>Emoji</li></a>
+                    <a href="https://octothorp.es/~/Spooky"><li>Spooky</li></a>
                 </ol>
             </section>
         </main>
@@ -272,11 +278,12 @@
                 currenttheme = elements[today-1].textContent;
                 document.getElementById("theme-hashtag").textContent = currenttheme;
 
-                for(let i = 0; i < today; i++)
+                for(let i = 0; i < elements.length; i++)
                 {
                     let when = "";
                     if((i+1) < today) when = "past";
                     else if((i+1) == today) when = "current";
+                    else when = "future";
 
                     elements[i].classList.add(when);
                 }
