@@ -4,7 +4,7 @@
         <title>Weird Web October</title>
 
         <meta name="viewport" content="width=device-width,initial-scale=1">
-        
+
         <link rel="preload" as="fetch" href="https://octothorp.es/?uri=https://weirdweboctober.website/" >
         <link rel="octo:octothorpes" href="weirdweboctober" >
 
@@ -175,31 +175,52 @@
                 </p>
 
                 <h2>How?</h2>
-                <p>
+                >
                     <h3>Step 1: Just make a website!</h3>
                     <p>
                         It can be static, dynamic, made with a website builder - whatever you’re comfortable with. We recommend about an hour to get the creative juices flowing, but it’s up to you.
                     </p>
 
+
+
                     <h3>Step 2: Share it!</h3>
                     <p>
-                    This step is optional, but we’d really love to see what everyone is making! Our friends at <a href="https://docs.octothorp.es/about">Octothorpes</a> have made it super easy to get your site listed on the <a href="https://octothorp.es/~/weirdweboctober">#weirdweboctober</a> hashtag. Just register your domain name <a href="https://octothorp.es/register">here</a> and then add this code snippet to the &lt;head&gt; section of your site:
 
+                    This step is optional, but we’d really love to see what everyone is making! Our friends at <a href="https://octothorp.es">Octothorpes</a> have made it super easy to get your site listed on the <a href="https://octothorp.es/~/weirdweboctober">#weirdweboctober</a> hashtag. Just register your domain name <a href="https://octothorp.es/register">here</a> and then have your pages ping them using any of the following easy methods.
+                    </p>
+
+                    <h5>You can do it invisbily just in the code</h5>
+
+                    Just add this code snippet to the &lt;head&gt; section of your site:
                     <code id="code-snippet">&lt;link rel=&quot;preload&quot; as=&quot;fetch&quot;
-    href=&quot;https://octothorp.es/?uri=https://YOUR_URL_HERE&quot; &gt;
-&lt;link rel=&quot;octo:octothorpes&quot; href=&quot;weirdweboctober&quot; &gt;</code>
+    href=&quot;https://octothorp.es/?uri=https://yoururlhere&quot;&gt;</code>
                     <span id="snippet-copy">Click to copy</span>
 
-                    And add this snippet each day to include a hashtag for the theme:
-                    <code id="theme-code-snippet">&lt;link rel=&quot;octo:octothorpes&quot; href=&quot;<span id="theme-hashtag">Reveal</span>&quot; &gt;</code>
-                    <span id="theme-snippet-copy">Click to copy</span>
-                    
-                    If you're on a Neocities site, you might need to use <a href="https://docs.octothorp.es/blog/neocities-fix/" target="_blank">slightly different code.</a>
+                    <h5>Or you can do it with a magic button</h5>
+                    <code id="button-snippet">&lt;img src=&quot;https://octothorp.es/badge?uri=https://put-your-page-url-here.com&quot;&gt;</code>
+                    <span id="button-copy">Click to copy</span>
 
+                    <p>if it works it should look like this:</p>
+                    <img src="https://octothorp.es/badge.png">
+
+                    <p>
+                        You can learn how it works <a href="https://docs.octothorp.es/image-indexing/" target="_blank">here</a> or <a href="badge.html">use our handy-dandy generator</a> to make the HTML for you.
                     </p>
-                </p>
+
+
+                    <h5><em>Either way, make sure to add your hashtags!</em></h5>
+
+                    <p>Add this snippet each day to include a the wwo hashtag and one for for the theme:
+
+                    <code id="theme-code-snippet">&lt;link rel=&quot;octo:octothorpes&quot; href=&quot;<span id="theme-hashtag">Reveal</span>&quot; &gt;&lt;link rel=&quot;octo:octothorpes&quot; href=&quot;weirdweboctober&quot; &gt;</code>
+                    <span id="theme-snippet-copy">Click to copy</span>
+                    </p>
 
                 <h2>Examples</h2>
+                <p>You can see all the pages by year and themes with the the new <a href="browse">WWO Browser</a>, with live updates via Octothorpes.<br>
+                    Or check out these selected entries!
+                </p>
+
                 <ul>
                     <li>
                         Interactive
@@ -305,7 +326,7 @@
                 }
             }
 
-            let snippet = '<link rel="preload" as="fetch" href="https://octothorp.es/?uri=https://YOUR_URL_HERE" >\n<link rel="octo:octothorpes" href="weirdweboctober" >';
+            let snippet = '<link rel="preload" as="fetch" href="https://octothorp.es/?uri=https://YOUR_URL_HERE" >';
             let codesnippet = document.getElementById("code-snippet");
             let snippetcopy = document.getElementById("snippet-copy");
 
@@ -318,7 +339,7 @@
                 if(snippetcopy.style.opacity == 0) snippetcopy.textContent = "Click to copy";
             });
 
-            let themesnippet = '<link rel="octo:octothorpes" href="' + currenttheme + '" >';
+            let themesnippet = '<link rel="octo:octothorpes" href="' + currenttheme + '" >\n<link rel="octo:octothorpes" href="weirdweboctober" >';
             let themecodesnippet = document.getElementById("theme-code-snippet");
             let themesnippetcopy = document.getElementById("theme-snippet-copy");
 
@@ -327,9 +348,24 @@
                 themesnippetcopy.textContent = "Copied!";
             });
 
-            themesnippetcopy.addEventListener("transitionend", function(event) {
-                if(themesnippetcopy.style.opacity == 0) themesnippetcopy.textContent = "Click to copy";
+            let buttonsnippet='<img src="https://octothorp.es/badge?uri=https://put-your-page-url-here.com">';
+            let buttoncodesnippet = document.getElementById("button-snippet");
+            let buttoncopy = document.getElementById("button-copy");
+
+
+            buttoncopy.addEventListener("transitionend", function(event) {
+                if(buttoncopy.style.opacity == 0) buttoncopy.textContent = "Click to copy";
             });
+
+            buttoncodesnippet.addEventListener("click", function(event) {
+                navigator.clipboard.writeText(buttonsnippet);
+                buttoncopy.textContent = "Copied!";
+            });
+
+            buttoncopy.addEventListener("transitionend", function(event) {
+                if(buttoncopy.style.opacity == 0) buttoncopy.textContent = "Click to copy";
+            });
+
         </script>
     </body>
 </html>
