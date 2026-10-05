@@ -41,6 +41,9 @@
     <aside id="sidebar">
         <h2>Daily tag</h2>
         <ul id="tags"></ul>
+        <h2>Domains</h2>
+        <p id="domain-status"></p>
+        <ol id="domains"></ol>
     </aside>
 
     <main id="main">
@@ -48,9 +51,7 @@
         <p id="status"></p>
         <div id="feed"></div>
 
-        <h2>Domains</h2>
-        <p id="domain-status"></p>
-        <ol id="domains"></ol>
+
     </main>
     </div>
 
@@ -142,7 +143,8 @@
         el('domains').replaceChildren(...sorted.map(([origin, count]) => {
             const li = document.createElement('li')
             const a = document.createElement('a')
-            a.href = origin
+            let stringOrigin = encodeURIComponent(origin)
+            a.href = "https://octothorp.es/domains/"+stringOrigin
             a.textContent = origin
             li.append(a, document.createTextNode(` — ${count} page${count === 1 ? '' : 's'}`))
             return li
